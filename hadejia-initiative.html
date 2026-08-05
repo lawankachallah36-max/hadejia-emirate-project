@@ -227,6 +227,58 @@
   .sig-block{font-family:'Fraunces', serif; font-style:italic; text-align:right; color:#F5EFE0;}
   .sig-block .role{font-family:'IBM Plex Mono', monospace; font-style:normal; font-size:0.72rem; color:var(--gold-soft); margin-top:6px;}
 
+  /* ---------- HORSE REGISTRATION ---------- */
+  .reg-wrap{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  @media(max-width:900px){.reg-wrap{grid-template-columns:1fr;}}
+  .reg-form{
+    background:var(--parchment); border:1px solid var(--line); padding:32px;
+  }
+  .reg-form .field{margin-bottom:18px;}
+  .reg-form label{
+    display:block; font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    text-transform:uppercase; letter-spacing:0.06em; color:var(--navy); margin-bottom:6px;
+  }
+  .reg-form input, .reg-form select{
+    width:100%; padding:11px 12px; border:1px solid var(--line); background:#fff;
+    font-family:'Source Sans 3', sans-serif; font-size:0.95rem; color:var(--ink);
+    border-radius:2px;
+  }
+  .reg-form input:focus, .reg-form select:focus{outline:2px solid var(--gold); outline-offset:1px;}
+  .reg-row2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media(max-width:520px){.reg-row2{grid-template-columns:1fr;}}
+  .reg-submit{
+    margin-top:6px; width:100%; background:var(--navy-deep); color:var(--parchment);
+    border:none; padding:14px; font-family:'IBM Plex Mono', monospace; font-size:0.85rem;
+    cursor:pointer; border-radius:2px; transition:background .2s;
+  }
+  .reg-submit:hover{background:var(--rust);}
+  .reg-note{font-size:0.82rem; color:#6b6250; margin-top:14px; line-height:1.5;}
+
+  .reg-side{display:flex; flex-direction:column; gap:20px;}
+  .reg-card{
+    border:1px solid var(--line); padding:24px; background:var(--parchment-dim);
+  }
+  .reg-card h4{font-size:1rem; margin-bottom:8px;}
+  .reg-card p{font-size:0.88rem; color:#4a4436; margin:0;}
+
+  .cert{
+    display:none; border:2px solid var(--navy); padding:26px; background:#fff;
+    position:relative; margin-top:22px;
+  }
+  .cert.show{display:block; animation:riseIn .5s ease forwards;}
+  .cert::before{
+    content:""; position:absolute; inset:8px; border:1px solid var(--gold); pointer-events:none;
+  }
+  .cert .cert-eyebrow{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--rust); text-transform:uppercase; letter-spacing:0.1em;}
+  .cert h3{font-size:1.15rem; margin-top:6px;}
+  .cert .cert-id{
+    font-family:'IBM Plex Mono', monospace; font-size:1.4rem; color:var(--navy-deep);
+    margin-top:10px; letter-spacing:0.03em;
+  }
+  .cert dl{display:grid; grid-template-columns:auto 1fr; gap:6px 16px; margin-top:16px; font-size:0.88rem;}
+  .cert dt{font-family:'IBM Plex Mono', monospace; color:var(--navy); font-size:0.72rem; text-transform:uppercase; align-self:center;}
+  .cert dd{margin:0;}
+
   footer{
     padding:36px 0; text-align:center; font-family:'IBM Plex Mono', monospace;
     font-size:0.72rem; color:#6b6250;
@@ -250,6 +302,7 @@
       <a href="#origin">Origin</a>
       <a href="#vision">Vision</a>
       <a href="#modules">Ecosystem</a>
+      <a href="#registration">Registration</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#outcomes">Outcomes</a>
     </nav>
@@ -385,6 +438,92 @@
   </div>
 </section>
 
+<section id="registration">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">04.1 — Digital Registration</p>
+      <h2>Register a horse with the Emirate</h2>
+      <div class="rule"></div>
+      <p style="margin-top:14px; color:#3a3428; max-width:60ch;">This is a working preview of the horse registration module described in the digital ecosystem — the first step toward the centralized equine information system referenced in the proposal.</p>
+    </div>
+
+    <div class="reg-wrap reveal">
+      <form class="reg-form" id="regForm">
+        <div class="field">
+          <label for="hName">Horse Name</label>
+          <input type="text" id="hName" required placeholder="e.g. Zaki">
+        </div>
+        <div class="reg-row2">
+          <div class="field">
+            <label for="hBreed">Breed</label>
+            <input type="text" id="hBreed" placeholder="e.g. Hausa Horse">
+          </div>
+          <div class="field">
+            <label for="hColor">Colour</label>
+            <input type="text" id="hColor" placeholder="e.g. Bay">
+          </div>
+        </div>
+        <div class="reg-row2">
+          <div class="field">
+            <label for="hSex">Sex</label>
+            <select id="hSex">
+              <option>Stallion</option>
+              <option>Mare</option>
+              <option>Gelding</option>
+              <option>Colt</option>
+              <option>Filly</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="hDob">Date of Birth</label>
+            <input type="date" id="hDob">
+          </div>
+        </div>
+        <div class="field">
+          <label for="oName">Owner's Full Name</label>
+          <input type="text" id="oName" required placeholder="e.g. Musa Ibrahim">
+        </div>
+        <div class="reg-row2">
+          <div class="field">
+            <label for="oPhone">Owner's Phone</label>
+            <input type="tel" id="oPhone" placeholder="080...">
+          </div>
+          <div class="field">
+            <label for="oWard">Ward / District</label>
+            <input type="text" id="oWard" placeholder="e.g. Gagulmari">
+          </div>
+        </div>
+        <button type="submit" class="reg-submit">Submit Registration</button>
+        <p class="reg-note">Preview only — this form runs entirely in your browser and is not yet connected to a live Emirate database. A submitted entry generates a sample registration certificate below, for demonstration.</p>
+      </form>
+
+      <div class="reg-side">
+        <div class="reg-card">
+          <h4>How registration works</h4>
+          <p>Every horse submitted here would receive a unique registration number, following the format used across the Emirate's records: <code>HDE-HR-YYYY-XXXXXX</code>.</p>
+        </div>
+        <div class="reg-card">
+          <h4>What happens next</h4>
+          <p>In the full system, this record joins the centralized equine database — linking ownership history, veterinary records, race entries, and stable allocation for the same horse.</p>
+        </div>
+
+        <div class="cert" id="certCard">
+          <p class="cert-eyebrow">Digital Registration Certificate</p>
+          <h3 id="certHorseName">—</h3>
+          <p class="cert-id" id="certId">—</p>
+          <dl>
+            <dt>Owner</dt><dd id="certOwner">—</dd>
+            <dt>Breed</dt><dd id="certBreed">—</dd>
+            <dt>Sex</dt><dd id="certSex">—</dd>
+            <dt>Ward</dt><dd id="certWard">—</dd>
+            <dt>Date</dt><dd id="certDate">—</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="roadmap" class="navy">
   <div class="wrap">
     <div class="section-head reveal">
@@ -480,7 +619,7 @@
       </div>
       <div class="sig-block">
         Lawan Kachalla
-        <div class="role">PROJECT FOUNDER &amp; VISION ARCHITECT<br>HADEJIA EMIRATE COUNCIL · August 2026</div>
+        <div class="role">PROJECT FOUNDER &amp; VISION ARCHITECT<br>HADEJIA EMIRATE COUNCIL · AUGUST 2026</div>
       </div>
     </div>
   </div>
@@ -496,6 +635,31 @@
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.15 });
   els.forEach(el => io.observe(el));
+
+  // Horse registration preview (client-side only — no live database yet)
+  const regForm = document.getElementById('regForm');
+  if (regForm) {
+    regForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const year = new Date().getFullYear();
+      const rand = Math.floor(100000 + Math.random() * 900000);
+      const regId = `HDE-HR-${year}-${rand}`;
+
+      document.getElementById('certHorseName').textContent = document.getElementById('hName').value || '—';
+      document.getElementById('certId').textContent = regId;
+      document.getElementById('certOwner').textContent = document.getElementById('oName').value || '—';
+      document.getElementById('certBreed').textContent = document.getElementById('hBreed').value || '—';
+      document.getElementById('certSex').textContent = document.getElementById('hSex').value || '—';
+      document.getElementById('certWard').textContent = document.getElementById('oWard').value || '—';
+      document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });
+
+      const cert = document.getElementById('certCard');
+      cert.classList.remove('show');
+      void cert.offsetWidth; // restart animation if submitted more than once
+      cert.classList.add('show');
+      cert.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    });
+  }
 </script>
 
 </body>
