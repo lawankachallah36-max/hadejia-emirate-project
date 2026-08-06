@@ -215,6 +215,21 @@
   .outcome-card ul{padding-left:18px; font-size:0.9rem; color:#3a3428; margin:10px 0 0;}
   .outcome-card li{margin-bottom:4px;}
 
+  /* ---------- EVENT ---------- */
+  .event-intro{max-width:640px;}
+  .event-gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:28px; margin-top:36px;}
+  .event-card{border:1px solid var(--line); background:var(--parchment); overflow:hidden;}
+  .event-media{
+    background:radial-gradient(circle at 50% 30%, #1b2c4d 0%, var(--navy-deep) 75%);
+    padding:34px 18px 22px; display:flex; align-items:center; justify-content:center;
+  }
+  .event-media svg{width:100%; max-width:210px; height:auto;}
+  .event-body{padding:22px 24px 28px;}
+  .event-body .tag{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--rust);}
+  .event-body h4{font-size:1.08rem; margin-top:10px;}
+  .event-body p{font-size:0.92rem; color:#3a3428; margin:8px 0 0;}
+  .event-meta{display:flex; gap:14px; margin-top:14px; font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#6b6250;}
+
   /* ---------- CONTACT / CTA ---------- */
   .cta-panel{
     background:var(--navy-deep); color:#EDE7D8; padding:64px 48px;
@@ -304,6 +319,7 @@
       <a href="#modules">Ecosystem</a>
       <a href="#registration">Registration</a>
       <a href="#roadmap">Roadmap</a>
+      <a href="#event">Event</a>
       <a href="#outcomes">Outcomes</a>
     </nav>
     <a class="nav-cta" href="#contact">Submission&nbsp;Copy →</a>
@@ -569,10 +585,77 @@
   </div>
 </section>
 
+<section id="event">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">06 — Signature Event</p>
+      <h2>The Hadejia Emirate Horse Racing Festival</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="event-intro reveal">
+      <p>A flagship, once-a-year gathering that brings the digital ecosystem to life on the field — where registered horses, verified riders, and the Emirate's racing heritage are celebrated in front of the community, traditional title-holders, and visiting guests.</p>
+    </div>
+    <div class="event-gallery reveal">
+
+      <div class="event-card">
+        <div class="event-media">
+          <svg viewBox="0 0 200 130" fill="none">
+            <path d="M40 100 Q45 60 75 45 Q78 30 95 24 L96 34 Q108 30 118 36 L132 30 L126 42 Q138 48 140 62 L152 66 L140 72 Q142 84 132 92 L136 108 L124 104 L120 116 L110 106 Q92 112 76 106 L64 116 L58 104 L48 108 Z" stroke="#C9972F" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M75 45 Q68 40 62 42" stroke="#C9972F" stroke-width="1.4"/>
+            <path d="M132 92 Q128 100 118 98" stroke="#C9972F" stroke-width="1.4"/>
+            <circle cx="112" cy="34" r="1.6" fill="#C9972F"/>
+          </svg>
+        </div>
+        <div class="event-body">
+          <span class="tag">Main Race</span>
+          <h4>Emirate Cup — Turbaning Day Race</h4>
+          <p>The festival's centrepiece: registered horses compete before the Emir's court, honouring a tradition that dates back generations.</p>
+          <div class="event-meta"><span>Track · Hadejia Central</span><span>1 Day</span></div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-media">
+          <svg viewBox="0 0 200 130" fill="none">
+            <path d="M38 96 Q44 58 72 44 Q76 28 92 22 L94 32 Q106 28 116 34 L130 27 L124 40 Q136 46 139 60 L150 64 L138 70 Q141 82 130 90 L134 106 L122 102 L118 114 L108 104 Q90 110 74 104 L62 114 L56 102 L46 106 Z" stroke="#E4C77A" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M72 44 Q65 38 58 40" stroke="#E4C77A" stroke-width="1.4"/>
+            <path d="M130 90 Q126 98 116 96" stroke="#E4C77A" stroke-width="1.4"/>
+            <circle cx="110" cy="32" r="1.6" fill="#E4C77A"/>
+          </svg>
+        </div>
+        <div class="event-body">
+          <span class="tag">Youth Category</span>
+          <h4>Young Riders Showcase</h4>
+          <p>A dedicated category for young riders and newly registered horses, built to grow participation and digital literacy among youth.</p>
+          <div class="event-meta"><span>Track · Hadejia Central</span><span>Half Day</span></div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-media">
+          <svg viewBox="0 0 200 130" fill="none">
+            <path d="M40 98 Q46 60 74 46 Q77 30 94 24 L95 34 Q107 30 117 36 L131 29 L125 41 Q137 47 139 61 L151 65 L139 71 Q141 83 131 91 L135 107 L123 103 L119 115 L109 105 Q91 111 75 105 L63 115 L57 103 L47 107 Z" stroke="#A85426" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M74 46 Q67 40 60 42" stroke="#A85426" stroke-width="1.4"/>
+            <path d="M131 91 Q127 99 117 97" stroke="#A85426" stroke-width="1.4"/>
+            <circle cx="111" cy="34" r="1.6" fill="#A85426"/>
+          </svg>
+        </div>
+        <div class="event-body">
+          <span class="tag">Heritage Trail</span>
+          <h4>Endurance &amp; Heritage Ride</h4>
+          <p>A long-distance trail linking historic sites across the Emirate, pairing endurance sport with cultural storytelling.</p>
+          <div class="event-meta"><span>Emirate Trail</span><span>2 Days</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section id="outcomes">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">06 — Projected Outcomes</p>
+      <p class="eyebrow">07 — Projected Outcomes</p>
       <h2>Impact across five dimensions</h2>
       <div class="rule"></div>
     </div>
