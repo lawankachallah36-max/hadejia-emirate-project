@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketplace & Gallery — Hadejia Emirate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --hde-ink:#12191f;
+    --hde-ink-2:#1b232b;
+    --hde-ink-3:#232d36;
+    --hde-gold:#c3993f;
+    --hde-gold-soft:#e9d9ae;
+    --hde-sand:#f3ead9;
+    --hde-line:rgba(233,217,174,0.14);
+    --hde-text:#ded4c2;
+    --hde-text-dim:#8b9198;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--hde-ink);
+    color:var(--hde-text);
+    font-family:'Work Sans', sans-serif;
+  }
+
+  header.hde-nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(18,25,31,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hde-line);
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .hde-brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:17px;
+    color:var(--hde-sand);
+    text-decoration:none;
+  }
+  .hde-navlinks{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    font-size:13px;
+  }
+  .hde-navlinks a{
+    color:var(--hde-text-dim);
+    text-decoration:none;
+    letter-spacing:0.02em;
+  }
+  .hde-navlinks a:hover{ color:var(--hde-gold-soft); }
+  .hde-navlinks a.is-current{ color:var(--hde-gold); }
+
+  .hde-section{
+    max-width:1120px;
+    margin:0 auto;
+    padding:72px 24px;
+  }
+  .hde-eyebrow{
+    display:flex; align-items:center; gap:12px;
+    font-size:13px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--hde-gold); margin-bottom:18px;
+  }
+  .hde-eyebrow::before{ content:""; width:28px; height:1px; background:var(--hde-gold); display:inline-block; }
+  .hde-h2{
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:clamp(28px,4.2vw,44px); line-height:1.15;
+    color:var(--hde-sand); margin:0 0 14px; max-width:20ch;
+  }
+  .hde-lede{
+    font-size:16px; line-height:1.65; color:var(--hde-text-dim);
+    max-width:60ch; margin:0 0 40px;
+  }
+
+  .hde-tabs{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
+  .hde-tab{
+    font-family:'Work Sans', sans-serif; font-size:13px; font-weight:600;
+    padding:9px 16px; border-radius:999px; border:1px solid var(--hde-line);
+    background:transparent; color:var(--hde-text-dim); cursor:pointer;
+    transition:all .18s ease;
+  }
+  .hde-tab.is-active, .hde-tab:hover{
+    border-color:var(--hde-gold); color:var(--hde-gold-soft);
+    background:rgba(195,153,63,0.08);
+  }
+  .hde-market-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:18px;
+  }
+  .hde-card{
+    background:var(--hde-ink-2); border:1px solid var(--hde-line); border-radius:14px;
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:transform .18s ease, border-color .18s ease;
+  }
+  .hde-card:hover{ transform:translateY(-3px); border-color:rgba(195,153,63,0.4); }
+  .hde-card-media{
+    height:130px;
+    background:linear-gradient(135deg, rgba(195,153,63,0.16), transparent 60%),
+      repeating-linear-gradient(45deg, rgba(233,217,174,0.05) 0 2px, transparent 2px 14px),
+      var(--hde-ink-3);
+    display:flex; align-items:center; justify-content:center; font-size:26px;
+  }
+  .hde-card-body{ padding:16px 16px 18px; flex:1; display:flex; flex-direction:column; gap:8px; }
+  .hde-card-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+  .hde-card-name{ font-family:'Fraunces', serif; font-weight:600; font-size:17px; color:var(--hde-sand); margin:0; }
+  .hde-seal{
+    flex-shrink:0; width:26px; height:26px; border-radius:50%;
+    border:1px solid var(--hde-gold); display:flex; align-items:center; justify-content:center;
+    font-size:12px; color:var(--hde-gold);
+  }
+  .hde-card-meta{ font-size:13px; color:var(--hde-text-dim); margin:0; }
+  .hde-card-reg{ font-size:11px; letter-spacing:0.04em; color:var(--hde-gold); font-family:monospace; }
+  .hde-card-foot{
+    margin-top:auto; display:flex; align-items:center; justify-content:space-between;
+    padding-top:10px; border-top:1px dashed var(--hde-line);
+  }
+  .hde-price{ font-family:'Fraunces', serif; font-weight:600; font-size:16px; color:var(--hde-gold-soft); }
+  .hde-btn-mini{
+    font-size:12px; font-weight:600; color:var(--hde-ink); background:var(--hde-gold);
+    border:none; padding:7px 12px; border-radius:8px; cursor:pointer;
+  }
+  .hde-market-note{
+    margin-top:28px; font-size:13px; color:var(--hde-text-dim);
+    border-left:2px solid var(--hde-gold); padding-left:14px;
+  }
+
+  .hde-gallery-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
+  .hde-photo{
+    position:relative; aspect-ratio:4/5; border-radius:12px; overflow:hidden;
+    background:var(--hde-ink-3); border:1px solid var(--hde-line); cursor:pointer;
+  }
+  .hde-photo::before{
+    content:attr(data-icon); position:absolute; inset:0; display:flex;
+    align-items:center; justify-content:center; font-size:34px;
+    background:linear-gradient(160deg, rgba(195,153,63,0.14), transparent 55%); opacity:0.85;
+  }
+  .hde-photo-tag{
+    position:absolute; top:10px; left:10px; font-size:10px; letter-spacing:0.08em;
+    text-transform:uppercase; background:rgba(18,25,31,0.75); color:var(--hde-gold-soft);
+    padding:4px 8px; border-radius:999px; border:1px solid var(--hde-line);
+  }
+  .hde-photo-cap{
+    position:absolute; left:0; right:0; bottom:0; padding:12px; font-size:13px;
+    color:var(--hde-sand); background:linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+  }
+
+  footer.hde-foot{
+    border-top:1px solid var(--hde-line);
+    padding:28px 24px;
+    text-align:center;
+    font-size:12px;
+    color:var(--hde-text-dim);
+  }
+  footer.hde-foot a{ color:var(--hde-gold-soft); text-decoration:none; }
+
+  @media (max-width:520px){ .hde-section{ padding:48px 18px; } }
+</style>
+</head>
+<body>
+
+<header class="hde-nav">
+  <a class="hde-brand" href="hadejia-initiative.html">Hadejia Emirate</a>
+  <nav class="hde-navlinks">
+    <a href="hadejia-initiative.html">Home</a>
+    <a href="hadejia-initiative.html#modules">Ecosystem</a>
+    <a href="hadejia-initiative.html#registration">Registration</a>
+    <a href="marketplace-gallery-en.html#marketplace" class="is-current">Marketplace</a>
+    <a href="marketplace-gallery-en.html#gallery" class="is-current">Gallery</a>
+  </nav>
+</header>
+
+<section class="hde-section" id="marketplace">
+  <div class="hde-eyebrow">03.1 — Digital Marketplace</div>
+  <h2 class="hde-h2">Marketplace: Horses, Equipment, Tickets & Merchandise</h2>
+  <p class="hde-lede">
+    A single platform for buying and selling registered horses, racing
+    equipment, event tickets, and Emirate heritage merchandise — every
+    listing bearing an HDE-HR number carries the Emirate's verification seal.
+  </p>
+
+  <div class="hde-tabs">
+    <button class="hde-tab is-active" data-filter="all">All</button>
+    <button class="hde-tab" data-filter="horse">Horses</button>
+    <button class="hde-tab" data-filter="gear">Equipment</button>
+    <button class="hde-tab" data-filter="ticket">Tickets</button>
+    <button class="hde-tab" data-filter="merch">Merchandise</button>
+  </div>
+
+  <div class="hde-market-grid" id="hdeMarketGrid">
+    <div class="hde-card" data-cat="horse">
+      <div class="hde-card-media">🐎</div>
+      <div class="hde-card-body">
+        <div class="hde-card-top">
+          <p class="hde-card-name">Zaki — Stallion, Bature Breed</p>
+          <span class="hde-seal" title="Emirate Verified">✓</span>
+        </div>
+        <p class="hde-card-meta">4 years old · Ginsau Ward</p>
+        <p class="hde-card-reg">HDE-HR-2026-004821</p>
+        <div class="hde-card-foot">
+          <span class="hde-price">₦2,400,000</span>
+          <button class="hde-btn-mini">View</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hde-card" data-cat="gear">
+      <div class="hde-card-media">🛠️</div>
+      <div class="hde-card-body">
+        <div class="hde-card-top"><p class="hde-card-name">Hand-Tooled Leather Saddle</p></div>
+        <p class="hde-card-meta">Handcrafted · Hadejia Central</p>
+        <div class="hde-card-foot">
+          <span class="hde-price">₦85,000</span>
+          <button class="hde-btn-mini">View</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hde-card" data-cat="ticket">
+      <div class="hde-card-media">🎟️</div>
+      <div class="hde-card-body">
+        <div class="hde-card-top"><p class="hde-card-name">Emirate Cup — Turbaning Day</p></div>
+        <p class="hde-card-meta">QR Ticket · Gate A–D</p>
+        <div class="hde-card-foot">
+          <span class="hde-price">₦2,500</span>
+          <button class="hde-btn-mini">Buy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hde-card" data-cat="merch">
+      <div class="hde-card-media">🧢</div>
+      <div class="hde-card-body">
+        <div class="hde-card-top"><p class="hde-card-name">Hadejia Racing Festival Cap</p></div>
+        <p class="hde-card-meta">Official Festival Merchandise</p>
+        <div class="hde-card-foot">
+          <span class="hde-price">₦4,000</span>
+          <button class="hde-btn-mini">Buy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hde-card" data-cat="horse">
+      <div class="hde-card-media">🐎</div>
+      <div class="hde-card-body">
+        <div class="hde-card-top">
+          <p class="hde-card-name">Amina — Mare, Local Breed</p>
+          <span class="hde-seal" title="Emirate Verified">✓</span>
+        </div>
+        <p class="hde-card-meta">3 years old · Kafin Hausa Ward</p>
+        <p class="hde-card-reg">HDE-HR-2026-004902</p>
+        <div class="hde-card-foot">
+          <span class="hde-price">₦1,650,000</span>
+          <button class="hde-btn-mini">View</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hde-card" data-cat="gear">
+      <div class="hde-card-media">🛠️</div>
+      <div class="hde-card-body">
+        <div class="hde-card-top"><p class="hde-card-name">Headgear & Training Set</p></div>
+        <p class="hde-card-meta">Full training set</p>
+        <div class="hde-card-foot">
+          <span class="hde-price">₦32,000</span>
+          <button class="hde-btn-mini">View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="hde-market-note">
+    Preview only — this marketplace is a demo prototype and is not yet
+    connected to a live payment system or the Emirate's database. In the
+    full system, every horse listing will link directly to its HDE-HR
+    registration record.
+  </p>
+</section>
+
+<section class="hde-section" id="gallery">
+  <div class="hde-eyebrow">07.1 — Gallery: Heritage & History</div>
+  <h2 class="hde-h2">Photo Gallery</h2>
+  <p class="hde-lede">
+    A collection of photos and videos from race day festivals, turbaning
+    ceremonies, and everyday life in the Emirate — a growing visual archive
+    of history.
+  </p>
+
+  <div class="hde-tabs">
+    <button class="hde-tab is-active" data-gfilter="all">All</button>
+    <button class="hde-tab" data-gfilter="race">Racing</button>
+    <button class="hde-tab" data-gfilter="heritage">Heritage</button>
+    <button class="hde-tab" data-gfilter="community">Community</button>
+  </div>
+
+  <div class="hde-gallery-grid" id="hdeGalleryGrid">
+    <div class="hde-photo" data-cat="race" data-icon="🏇">
+      <span class="hde-photo-tag">Racing</span>
+      <span class="hde-photo-cap">Emirate Cup, Turbaning Day</span>
+    </div>
+    <div class="hde-photo" data-cat="heritage" data-icon="👑">
+      <span class="hde-photo-tag">Heritage</span>
+      <span class="hde-photo-cap">The Emir's seating at the racing festival</span>
+    </div>
+    <div class="hde-photo" data-cat="community" data-icon="👥">
+      <span class="hde-photo-tag">Community</span>
+      <span class="hde-photo-cap">Youth watching the races</span>
+    </div>
+    <div class="hde-photo" data-cat="race" data-icon="🐎">
+      <span class="hde-photo-tag">Racing</span>
+      <span class="hde-photo-cap">Young Riders Showcase</span>
+    </div>
+    <div class="hde-photo" data-cat="heritage" data-icon="🕌">
+      <span class="hde-photo-tag">Heritage</span>
+      <span class="hde-photo-cap">Endurance & Heritage Trail Ride</span>
+    </div>
+    <div class="hde-photo" data-cat="community" data-icon="📸">
+      <span class="hde-photo-tag">Community</span>
+      <span class="hde-photo-cap">Horse training with children</span>
+    </div>
+  </div>
+</section>
+
+<footer class="hde-foot">
+  © 2026 Lawan Kachalla · <a href="hadejia-initiative.html">Back to Home</a>
+</footer>
+
+<script>
+  document.querySelectorAll('#marketplace .hde-tab').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('#marketplace .hde-tab').forEach(b=>b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('#hdeMarketGrid .hde-card').forEach(card=>{
+        card.style.display = (f==='all' || card.dataset.cat===f) ? '' : 'none';
+      });
+    });
+  });
+  document.querySelectorAll('#gallery .hde-tab').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('#gallery .hde-tab').forEach(b=>b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const f = btn.dataset.gfilter;
+      document.querySelectorAll('#hdeGalleryGrid .hde-photo').forEach(p=>{
+        p.style.display = (f==='all' || p.dataset.cat===f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+  </html>
